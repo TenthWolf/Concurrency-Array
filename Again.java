@@ -4,6 +4,12 @@ import java.util.Random;
 
 public class Again extends Thread {
 
+	/**
+	 * class will calculate random numbers between 1 and 10
+	 * 
+	 * @param args - array of strings which stores arguments passed by command line
+	 *             while starting a program
+	 */
 	public static void main(String[] args) {
 		Random rand = new Random();
 		int[] arr = new int[200000000];

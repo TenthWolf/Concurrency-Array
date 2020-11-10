@@ -1,9 +1,22 @@
 package create;
 
+/**
+ * class will calculate a parallel array sum
+ * 
+ * @author Rodolfo Puig
+ * @since 2020 - 11 - 10
+ */
 public class Transfer extends Thread {
 	private int[] arr;
 	private int little, big, median;
 
+	/**
+	 * create constructor
+	 * 
+	 * @param arr    - nickname for array
+	 * @param little - get the smallest value
+	 * @param big    - get the largest value
+	 */
 	public Transfer(int[] arr, int little, int big) {
 		this.arr = arr;
 		this.little = little;
@@ -17,7 +30,14 @@ public class Transfer extends Thread {
 		median = single(arr, little, big);
 	}
 
-	// sum of single thread
+	/**
+	 * 
+	 * 
+	 * @param arr    - will be used to count for total variable
+	 * @param little - will be less than big
+	 * @param big    - has to equal high value
+	 * @return sum of single thread method
+	 */
 	public static int single(int[] arr, int little, int big) {
 		int total = 0;
 
@@ -28,11 +48,22 @@ public class Transfer extends Thread {
 		return total;
 	}
 
+	/**
+	 * 
+	 * @param arr - gets the length to count the single method
+	 * @return - calls the single method
+	 */
 	public static int single(int[] arr) {
 		return single(arr, 0, arr.length);
 	}
 
-	// parallel array sum
+	/**
+	 * 
+	 * @param arr     - returns the value of the length inside size
+	 * @param threads - used as an integer
+	 * @return - parallel array sum
+	 */
+	//
 	public static int parallelSum(int[] arr, int threads) {
 		// int size = (int) Math.ceil(arr.length * 1.0 / threads);
 		int size = (int) Math.ceil(arr.length / threads);
@@ -59,10 +90,19 @@ public class Transfer extends Thread {
 		return total;
 	}
 
+	/**
+	 * 
+	 * @return - uses diff to find the median
+	 */
 	public int getmedianSum() {
 		return median;
 	}
 
+	/**
+	 * 
+	 * @param arr - used for counting values on parallelSum method
+	 * @return - returns the method parallelSum
+	 */
 	public static int getSum(int[] arr) {
 		return parallelSum(arr, Runtime.getRuntime().availableProcessors());
 	}
